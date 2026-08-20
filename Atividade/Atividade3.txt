@@ -1,0 +1,23 @@
+using System.Collections.Generic;
+
+namespace Lista
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> L1 = new List<int> { 5, 7, 8, 3, 4, 45, 9, 10 };
+            List<int> L2 = new List<int> { 56, 17, 28, 44, 6, 7, 13, 35, 14 };
+            List<List<int>> L3 = new List<List<int>> { L1, L2 };
+
+            foreach (var total in L3)
+            {
+                foreach (var item in total)
+                {
+                    L3.Sort();
+                    Console.WriteLine(L3);
+                }
+            }
+        }
+    }
+}
