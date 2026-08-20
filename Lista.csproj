@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Atividade\" />
+    <Folder Include="DesafioLista\" />
   </ItemGroup>
 
 </Project>
