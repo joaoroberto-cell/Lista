@@ -7,7 +7,8 @@ namespace Lista
         static void Main(string[] args)
         {
             List<int> Numeros = [];
-            int multi = 1;
+            List<int> Pares = [];
+            List<int> Impares = [];
 
             while (true)
             {
@@ -21,21 +22,24 @@ namespace Lista
 
             foreach (int i in Numeros)
             {
-                multi *= i;
+                if (i % 2 == 0)
+                {
+                    Pares.Add(i);
+                }
+                else
+                {
+                    Impares.Add(i);
+                }
 
             }
+            Pares.Sort();
+            Console.WriteLine($"Os Pares em ordem: {string.Join(", ", Pares)}");
 
-            int maior = Numeros.Max();
-            int menor = Numeros.Min();
+            Impares.Sort();
+            Console.WriteLine($"Os Impares em ordem: {string.Join(", ", Impares)})");
 
-            Numeros.Sort();
-            Console.WriteLine($"Números em ordem: {string.Join(", ", Numeros)}");
+            Console.WriteLine($"O Resultado da soma dos números é: {Numeros.Sum()}");
 
-            Console.WriteLine($"Números multiplicados: {multi}");
-
-            Console.WriteLine($"Número maior: {maior}");
-
-            Console.WriteLine($"Número menor: {menor}");
         }
     }
 }
