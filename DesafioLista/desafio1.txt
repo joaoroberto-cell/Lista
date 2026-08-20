@@ -1,0 +1,45 @@
+using System.Collections.Generic;
+
+namespace Lista
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Numeros = [];
+            List<int> Pares = [];
+            List<int> Impares = [];
+
+            while (true)
+            {
+                Console.WriteLine("Digite um número (0 para sair): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+
+                if (num == 0)
+                    break;
+                Numeros.Add(num);
+            }
+
+            foreach (int i in Numeros)
+            {
+                if (i % 2 == 0)
+                {
+                    Pares.Add(i);
+                }
+                else
+                {
+                    Impares.Add(i);
+                }
+
+            }
+            Pares.Sort();
+            Console.WriteLine($"Os Pares em ordem: {string.Join(", ", Pares)}");
+
+            Impares.Sort();
+            Console.WriteLine($"Os Impares em ordem: {string.Join(", ", Impares)})");
+
+            Console.WriteLine($"O Resultado da soma dos números é: {Numeros.Sum()}");
+
+        }
+    }
+}
