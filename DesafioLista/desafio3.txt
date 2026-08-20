@@ -1,0 +1,40 @@
+using System.Collections.Generic;
+
+namespace Lista
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> Palavras = [];
+
+            string palavra = "";
+
+            while (true)
+            {
+                Console.WriteLine("Digite uma palavra: ");
+                palavra = Console.ReadLine();
+
+                if (palavra == "0")
+                    break;
+                Palavras.Add(palavra);
+            }
+
+
+            int contador = 0;
+
+            Console.WriteLine("Digite a palvra que você busca saber a quantidade: ");
+            string buscaPalavra = Console.ReadLine();
+
+            foreach (string valor in Palavras)
+            {
+                if (valor == buscaPalavra)
+                {
+                    contador++;
+                }
+            }
+
+            Console.WriteLine($"A palavra {buscaPalavra} apareceu {contador} vezes");
+        }
+    }
+}
