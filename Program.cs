@@ -7,12 +7,12 @@ namespace Lista
         static void Main(string[] args)
         {
             List<int> Numeros = [];
-            List<int> Pares = [];
-            List<int> Impares = [];
+            List<int> Repetidos = [];
+            List<int> NaoRepetidos = [];
 
             while (true)
             {
-                Console.WriteLine("Digite um número (0 para sair): ");
+                Console.WriteLine("Informe um número (0 para sair): ");
                 int num = Convert.ToInt32(Console.ReadLine());
 
                 if (num == 0)
@@ -22,23 +22,22 @@ namespace Lista
 
             foreach (int i in Numeros)
             {
-                if (i % 2 == 0)
+                if (!NaoRepetidos.Contains(i) && !Repetidos.Contains(i))
                 {
-                    Pares.Add(i);
+                    NaoRepetidos.Add(i);
                 }
                 else
                 {
-                    Impares.Add(i);
+                    NaoRepetidos.Remove(i);
+                    Repetidos.Remove(i);
+                    Repetidos.Add(i);
                 }
-
             }
-            Pares.Sort();
-            Console.WriteLine($"Os Pares em ordem: {string.Join(", ", Pares)}");
 
-            Impares.Sort();
-            Console.WriteLine($"Os Impares em ordem: {string.Join(", ", Impares)})");
+            Console.WriteLine($"Números iformados: {string.Join(", ", Numeros)}\n");
+            Console.WriteLine($"Números repetidos: {string.Join(", ", Repetidos)}\n");
+            Console.WriteLine($"Números não repetidos: {string.Join(", ", NaoRepetidos)}");
 
-            Console.WriteLine($"O Resultado da soma dos números é: {Numeros.Sum()}");
 
         }
     }
