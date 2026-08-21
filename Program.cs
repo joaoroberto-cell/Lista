@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 
 namespace Lista
 {
@@ -6,39 +7,45 @@ namespace Lista
     {
         static void Main(string[] args)
         {
-            List<int> Numeros = [];
-            List<int> Repetidos = [];
-            List<int> NaoRepetidos = [];
+            List<string> Perguntas = ["Telefonou para a vítima?", "Esteve no local do crime?", "Mora perto da vítima?", "Devia para a vítima?", "Já trabalhou com a vítima?"];
+            List<bool> Sim = [];
+            List<bool> Nao = [];
 
-            while (true)
+            foreach (string percorrer in Perguntas)
             {
-                Console.WriteLine("Informe um número (0 para sair): ");
-                int num = Convert.ToInt32(Console.ReadLine());
+                while (true)
+                {
+                    Console.WriteLine("Responda com [S/N]: ");
+                    Console.WriteLine(percorrer);
+                    string resposta = Console.ReadLine().ToLower();
 
-                if (num == 0)
-                    break;
-                Numeros.Add(num);
+                    if (resposta == "s")
+                    {
+                        Sim.Add(true);
+                        break;
+                    }
+
+                    else if (resposta == "n")
+                    {
+                        Nao.Add(false);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Resposta inválida\n");
+
+                    }
+                }
             }
 
-            foreach (int i in Numeros)
-            {
-                if (!NaoRepetidos.Contains(i) && !Repetidos.Contains(i))
-                {
-                    NaoRepetidos.Add(i);
-                }
-                else
-                {
-                    NaoRepetidos.Remove(i);
-                    Repetidos.Remove(i);
-                    Repetidos.Add(i);
-                }
-            }
-
-            Console.WriteLine($"Números iformados: {string.Join(", ", Numeros)}\n");
-            Console.WriteLine($"Números repetidos: {string.Join(", ", Repetidos)}\n");
-            Console.WriteLine($"Números não repetidos: {string.Join(", ", NaoRepetidos)}");
-
-
+            if (Sim.Count() == 0 || Sim.Count() == 1)
+                Console.WriteLine("Inocente");
+            else if (Sim.Count() == 2)
+                Console.WriteLine("Suspeito");
+            else if (Sim.Count() == 3 || Sim.Count() == 4)
+                Console.WriteLine("Cúmplice");
+            else
+                Console.WriteLine("Assassino");
         }
     }
 }
