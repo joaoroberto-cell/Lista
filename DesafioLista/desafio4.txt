@@ -1,0 +1,44 @@
+using System.Collections.Generic;
+
+namespace Lista
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> Numeros = [];
+            List<int> Repetidos = [];
+            List<int> NaoRepetidos = [];
+
+            while (true)
+            {
+                Console.WriteLine("Informe um número (0 para sair): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+
+                if (num == 0)
+                    break;
+                Numeros.Add(num);
+            }
+
+            foreach (int i in Numeros)
+            {
+                if (!NaoRepetidos.Contains(i) && !Repetidos.Contains(i))
+                {
+                    NaoRepetidos.Add(i);
+                }
+                else
+                {
+                    NaoRepetidos.Remove(i);
+                    Repetidos.Remove(i);
+                    Repetidos.Add(i);
+                }
+            }
+
+            Console.WriteLine($"Números iformados: {string.Join(", ", Numeros)}\n");
+            Console.WriteLine($"Números repetidos: {string.Join(", ", Repetidos)}\n");
+            Console.WriteLine($"Números não repetidos: {string.Join(", ", NaoRepetidos)}");
+
+
+        }
+    }
+}
